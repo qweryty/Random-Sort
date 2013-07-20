@@ -29,14 +29,14 @@ void Swap(int *a, int *b){
     *b = c;
 }
 
-void RandomSort(int *a, int length, size_t *iter){
+void RandomSort(int *a, int length){
     int x, y, z;
     z = rand() % length;
     while(!Sorted(a, length)){
         for(int i = 0; i < z; i++){
             x = rand() % length;
             y = rand() % length;
-            if(!(x == y)){
+            if(x != y){
                 Swap(&a[x], &a[y]);
             }
         }
@@ -45,16 +45,13 @@ void RandomSort(int *a, int length, size_t *iter){
 
 int main(){
     srand(time(0));
-    int l = 13;
-    int a[l];// = {0, 0, 0};
+    int l;
+    cin >> l;
+    int a[l];
     for(int i = 0; i < l; i++){
-        a[i] = rand() % 11;
-        cout << a[i] << " ";
+        cin >> a[i];
     }
-    cout << endl;
-    size_t iter = 0;
-    RandomSort(a, l, &iter);
+    RandomSort(a, l);
     Print(a, l);
-
     return 0;
 }
